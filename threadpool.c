@@ -54,6 +54,7 @@ static void *__do_thread(void *arg)
 deadloop:
 	if (pthread_mutex_lock(&(this_pool->lock_on_p)))
 		__err_exit("mutex lock", -EMUTEXLOCK);
+	/*
 	if(this_pool->exit_thread_num)
 	{
 		this_pool->exit_thread_num--;
@@ -61,6 +62,7 @@ deadloop:
 			__err_exit("mutex unlock",-EMUTEXULCK);
 		pthread_exit(NULL);
 	}
+	*/
 	while (!(this_pool->list_head) && (!this_pool->isclosed))
 		if (pthread_cond_wait(&(this_pool->t_null_cond), &(this_pool->lock_on_p)))
 			__err_exit("cond wait", -ECONDWAIT);
