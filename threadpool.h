@@ -36,9 +36,9 @@ struct thread_pool {
 	num_t tasks_max;
 	num_t cur_task_nums;
 	num_t cur_threads_nums;	
-	num_t exit_thread_num;
+	//num_t exit_thread_num;
 	pthread_t * threads;
-	pthread_t daemon_tid;
+	//pthread_t daemon_tid;
 
 	pthread_mutex_t lock_on_p;
 	pthread_cond_t t_null_cond;
@@ -49,8 +49,8 @@ struct thread_pool {
 
 #define __head_t	list_head->ldata
 #define __t_next	list_head->next
-#define __T_BATCH	threads_min / 2
-#define __ADD_LIMIT	tasks_max / 2
+//#define __T_BATCH	threads_min / 2
+//#define __ADD_LIMIT	tasks_max / 2
 
 	int (*add)(void *(*)(void*),void *,struct thread_pool*);
 	void (*destory)();
